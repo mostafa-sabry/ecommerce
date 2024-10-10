@@ -17,11 +17,11 @@ class SplashWidget extends StatelessWidget {
         verticalSpace(20),
         Text(
           'Walter Wear',
-          style: FontHelper.font24white,
+          style: FontHelper.font24White,
         ),
         Text(
           'Thread Reverie Boutique',
-          style: FontHelper.font16white,
+          style: FontHelper.font16White,
         ),
       ],
     );
