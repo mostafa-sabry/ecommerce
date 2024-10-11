@@ -4,20 +4,20 @@ import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theming/fonts.dart';
 import '../../../../core/widget/my_button.dart';
 import '../../../../core/widget/my_text_form_field.dart';
-import 'my_divider.dart';
-import 'my_not_a_member.dart';
-import 'my_login_google.dart';
+import '../../../login/ui/widget/my_divider.dart';
+import '../../../login/ui/widget/my_login_google.dart';
+import 'dont_have_an_account.dart';
 
-class EmailAndPassword extends StatefulWidget {
-  const EmailAndPassword({
+class CreateAccount extends StatefulWidget {
+  const CreateAccount({
     super.key,
   });
 
   @override
-  State<EmailAndPassword> createState() => _EmailAndPasswordState();
+  State<CreateAccount> createState() => _CreateAccountState();
 }
 
-class _EmailAndPasswordState extends State<EmailAndPassword> {
+class _CreateAccountState extends State<CreateAccount> {
   bool isObscure = true;
 
   @override
@@ -28,25 +28,19 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
         children: [
           verticalSpace(32),
           Text(
-            'Welcome',
+            'Join With Us',
             style: FontHelper.font32Dark,
           ),
           Text(
             'Welcome Back, Enjoy Shopping and Offers',
             style: FontHelper.font16Gray,
           ),
-          verticalSpace(32),
-          Center(
-            child: Image.asset('assets/logo.png'),
+          verticalSpace(57),
+          const MyTextFormField(
+            hintText: 'Name',
+            isObscure: false,
           ),
-          Align(
-            alignment: Alignment.center,
-            child: Text(
-              'Walter Wear',
-              style: FontHelper.font24Dark,
-            ),
-          ),
-          verticalSpace(50),
+          verticalSpace(24),
           const MyTextFormField(
             hintText: 'Email or Phone',
             isObscure: false,
@@ -66,6 +60,21 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
                   : const Icon(Icons.visibility_off),
             ),
           ),
+          verticalSpace(24),
+          MyTextFormField(
+            hintText: 'Re-Password',
+            isObscure: isObscure,
+            suffixIcon: IconButton(
+              onPressed: () {
+                setState(() {
+                  isObscure = !isObscure;
+                });
+              },
+              icon: isObscure
+                  ? const Icon(Icons.visibility)
+                  : const Icon(Icons.visibility_off),
+            ),
+          ),
           verticalSpace(10),
           Text(
             'Forget you password ?',
@@ -73,7 +82,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
           ),
           verticalSpace(16),
           MyButton(
-            text: 'Login',
+            text: 'Register',
             onTap: () {},
           ),
           verticalSpace(44.5),
@@ -81,7 +90,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
           verticalSpace(24),
           const MyLoginGoogle(),
           verticalSpace(24),
-          const MyNotAMember()
+          const DontHaveAnAccount()
         ],
       ),
     );
