@@ -3,12 +3,16 @@ import 'package:ecommerce/core/networking/api/api_consumer.dart';
 import 'package:ecommerce/core/networking/api/end_points.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../data/model/login_model.dart';
+
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this.api) : super(LoginInitial());
 
   final ApiConsumer api;
+
+  LoginModel? user;
 
   login({required String email, required String password}) async {
     try {
@@ -20,6 +24,7 @@ class LoginCubit extends Cubit<LoginState> {
           password: password,
         },
       );
+      user = LoginModel.fromJson(response);
       emit(LoginSuccess());
     } on ServerException catch (e) {
       emit(LoginError(errMessage: e.errorModel.message));

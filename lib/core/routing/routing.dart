@@ -9,6 +9,8 @@ import 'package:ecommerce/features/splash/ui/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/verify/ui/screens/verify_screen.dart';
+
 class Routing {
   Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -26,6 +28,8 @@ class Routing {
       case Routes.register:
         return MaterialPageRoute(builder: (context) => const SigninAccount());
 
+      case Routes.verify:
+        return MaterialPageRoute(builder: (context) => const VerifyScreen());
       default:
         return MaterialPageRoute(builder: (context) => const NoRouteScreen());
     }

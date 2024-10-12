@@ -1,3 +1,4 @@
+import 'package:ecommerce/core/theming/my_colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/helpers/spacing.dart';
@@ -84,6 +85,7 @@ class _CreateAccountState extends State<CreateAccount> {
           MyButton(
             text: 'Register',
             onTap: () {},
+            color: MyColors.myApp,
           ),
           verticalSpace(44.5),
           const MyDivider(),
