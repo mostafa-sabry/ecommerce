@@ -18,11 +18,15 @@ class EmailAndPassword extends StatefulWidget {
 }
 
 class _EmailAndPasswordState extends State<EmailAndPassword> {
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   bool isObscure = true;
 
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -47,14 +51,28 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
             ),
           ),
           verticalSpace(50),
-          const MyTextFormField(
+          MyTextFormField(
             hintText: 'Email or Phone',
+            controller: emailController,
             isObscure: false,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter Email or Phone';
+              }
+              return null;
+            },
           ),
           verticalSpace(24),
           MyTextFormField(
             hintText: 'Password',
+            controller: passwordController,
             isObscure: isObscure,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter Password';
+              }
+              return null;
+            },
             suffixIcon: IconButton(
               onPressed: () {
                 setState(() {
@@ -74,7 +92,9 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
           verticalSpace(16),
           MyButton(
             text: 'Login',
-            onTap: () {},
+            onTap: () {
+              if (formKey.currentState!.validate()) {}
+            },
           ),
           verticalSpace(44.5),
           const MyDivider(),
