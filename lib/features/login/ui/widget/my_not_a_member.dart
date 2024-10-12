@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/fonts.dart';
 
-class DontHaveAnAccount extends StatelessWidget {
-  const DontHaveAnAccount({
+class MyNotAMember extends StatelessWidget {
+  const MyNotAMember({
     super.key,
   });
 
@@ -13,11 +14,13 @@ class DontHaveAnAccount extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          'Don\'t have an account?',
+          'Not A Member ?',
           style: FontHelper.font14Dark,
         ),
         TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, Routes.register);
+            },
             child: Text(
               "Register Now",
               style: FontHelper.font14Blue,
