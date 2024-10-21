@@ -1,14 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:ecommerce/core/networking/api/dio_consumer.dart';
 import 'package:ecommerce/core/routing/routes.dart';
+import 'package:ecommerce/features/auth/signin/logic/cubit/signin_cubit.dart';
 import 'package:ecommerce/features/home/ui/screens/home_screen.dart';
-import 'package:ecommerce/features/login/logic/cubit/login_cubit.dart';
-import 'package:ecommerce/features/login/ui/screen/login_screen.dart';
-import 'package:ecommerce/features/signin/ui/screen/signin_account_screen.dart';
 import 'package:ecommerce/features/splash/ui/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/auth/login/logic/cubit/login_cubit.dart';
+import '../../features/auth/login/ui/screen/login_screen.dart';
+import '../../features/auth/signin/ui/screen/signin_account_screen.dart';
 import '../../features/verify/ui/screens/verify_screen.dart';
 
 class Routing {
@@ -26,7 +27,11 @@ class Routing {
           ),
         );
       case Routes.register:
-        return MaterialPageRoute(builder: (context) => const SigninAccount());
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (context) => SigninCubit(DioConsumer(dio: Dio())),
+                  child: const SigninAccount(),
+                ));
 
       case Routes.verify:
         return MaterialPageRoute(builder: (context) => const VerifyScreen());
