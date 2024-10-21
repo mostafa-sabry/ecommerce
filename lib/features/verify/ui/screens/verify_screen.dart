@@ -1,10 +1,10 @@
 import 'package:ecommerce/core/theming/my_colors.dart';
 import 'package:flutter/material.dart';
 
-import '../widget/email_and_password.dart';
+import '../widget/verify_widget.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class VerifyScreen extends StatelessWidget {
+  const VerifyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class LoginScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24),
-          child: EmailAndPassword(),
+          child: VerifyBodyWidget(),
         ),
       ),
     );

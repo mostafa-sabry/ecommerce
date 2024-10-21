@@ -1,11 +1,16 @@
 import 'package:ecommerce/core/theming/my_colors.dart';
 import 'package:flutter/material.dart';
 
-import '../widget/email_and_password.dart';
+import '../widget/singin_widget.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SigninAccount extends StatefulWidget {
+  const SigninAccount({super.key});
 
+  @override
+  State<SigninAccount> createState() => _SigninAccountState();
+}
+
+class _SigninAccountState extends State<SigninAccount> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -14,7 +19,7 @@ class LoginScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24),
-          child: EmailAndPassword(),
+          child: CreateAccount(),
         ),
       ),
     );

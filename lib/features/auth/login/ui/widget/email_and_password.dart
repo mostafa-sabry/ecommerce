@@ -1,12 +1,14 @@
 import 'package:ecommerce/core/theming/my_colors.dart';
-import 'package:ecommerce/features/login/logic/cubit/login_cubit.dart';
+import 'package:ecommerce/features/auth/login/logic/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/helpers/spacing.dart';
-import '../../../../core/theming/fonts.dart';
-import '../../../../core/widget/my_button.dart';
-import '../../../../core/widget/my_text_form_field.dart';
+import '../../../../../core/helpers/show_toast.dart';
+import '../../../../../core/helpers/spacing.dart';
+import '../../../../../core/routing/routes.dart';
+import '../../../../../core/theming/fonts.dart';
+import '../../../../../core/widget/my_button.dart';
+import '../../../../../core/widget/my_text_form_field.dart';
 import 'my_divider.dart';
 import 'my_not_a_member.dart';
 import 'my_login_google.dart';
@@ -31,17 +33,10 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginSuccess) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text("success"),
-            ),
-          );
+          showTost(msg: 'تم تسجيل الدخول بنجاح');
+          Navigator.pushReplacementNamed(context, Routes.home);
         } else if (state is LoginError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.errMessage),
-            ),
-          );
+          showTost(msg: state.errMessage);
         }
       },
       builder: (context, state) {
@@ -111,10 +106,13 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
               ),
               verticalSpace(16),
               state is LoginLoading
-                  ? const Center(child: CircularProgressIndicator())
+                  ? const Center(
+                      child: CircularProgressIndicator(
+                      color: MyColors.myApp,
+                    ))
                   : MyButton(
                       text: 'Login',
-                      color: MyColors.stroke,
+                      color: MyColors.myApp,
                       onTap: () {
                         if (formKey.currentState!.validate()) {
                           context.read<LoginCubit>().login(

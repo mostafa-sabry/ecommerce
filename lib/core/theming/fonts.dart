@@ -35,6 +35,10 @@ class FontHelper {
     fontSize: 14,
     color: MyColors.gray,
   );
+  static TextStyle font18Gray2 = GoogleFonts.poppins(
+    fontSize: 18,
+    color: MyColors.gray2,
+  );
   static TextStyle font12Blue = GoogleFonts.poppins(
     fontSize: 12,
     color: MyColors.blue,
