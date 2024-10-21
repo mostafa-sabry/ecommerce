@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class MyTextFormField extends StatelessWidget {
   final String hintText;
   final Widget? suffixIcon;
+  final TextInputType? keyboardType;
   final bool isObscure;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
@@ -15,7 +16,8 @@ class MyTextFormField extends StatelessWidget {
       this.suffixIcon,
       required this.isObscure,
       this.controller,
-      this.validator});
+      this.validator,
+      this.keyboardType});
 
   @override
   Widget build(BuildContext context) {

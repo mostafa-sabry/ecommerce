@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:ecommerce/features/login/data/model/error_login_model.dart';
+
+import '../../features/auth/login/data/model/error_login_model.dart';
 
 class ServerException implements Exception {
   final ErrorModel errorModel;
